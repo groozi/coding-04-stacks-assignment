@@ -14,6 +14,9 @@
  */
 
 #include "data.h"
+#include <iostream> //delete this later
+
+#define MIN_SIZE 2  //delete this later
 
 class Stack {
 
@@ -27,6 +30,12 @@ public:
     //CONSTRUCTORS/DESTRUCTORS
     Stack(int); //constructor receives int for size
     ~Stack(); //destructor
+
+    //function prototypes
+    bool push(int, string*);
+   // bool pop();
+   // bool peek();
+    bool isEmpty();
 
 
     
