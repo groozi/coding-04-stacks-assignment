@@ -10,7 +10,7 @@
 int main(int argc, char **argv) {
     // here for the rand_string() function
     // if you don't use it, get rid of this
-    //srand(time(NULL)); I COMMENTED OUT
+    srand(time(NULL));
 
     /* ***************************************************************
      * First get your arguments from the command line. Your program must
@@ -23,6 +23,47 @@ int main(int argc, char **argv) {
      * Remember, you may not use more than one return, even in main()
      * and you may not use exit() or anything like that.
      * ***************************************************************/
+
+    //variable size receives string input from command line turns to int
+    int size = atoi(argv[1]);
+
+    //if received argument is not valid, print error message
+    if (argc == 2 && size >= 2){
+        std::cout << "Maximum stack size is " << size << std::endl << std::endl;
+
+    } else {
+        std::cout << "Error. ";
+    }
+
+    try {
+         Stack stack(size);
+    }
+    catch (...){
+        std::cout << "Invalid input.  Please enter integer greater than or equal to 2." << std::endl;
+    }
+
+    //creating the stack
+   Stack stack(size);
+
+   //testing push with random strings and int from 1-20
+    std::string strtemp;
+    for(int i=0; i<20; i++){
+
+        rand_string(&strtemp);
+
+        std::cout << "Random String: " << strtemp << std::endl;
+        std::cout << "Pushing... ";
+
+        if(stack.push(i, &strtemp)){
+            std::cout << "Push successful. " << std::endl;
+        } else {
+            std::cout << "Error. Int for id must be a positive number and string cannot be empty." << std::endl;
+        }
+        std::cout << std::endl;
+    } 
+
+
+
     
     /* ***************************************************************
      * Use the number passed in from the command line and declare a stack
@@ -30,6 +71,11 @@ int main(int argc, char **argv) {
      * your stack ALSO checks the number passed in to it. You cannot rely
      * on main checking the number first. This will be tested during grading.
      * ***************************************************************/
+
+
+
+
+
 
     
     /* ***************************************************************
@@ -49,14 +95,17 @@ int main(int argc, char **argv) {
      * it and understand it and can use it yourself in your code.
      * ***************************************************************/
     
-    /*
+    
     // make 20 random strings, store them, display them
-    std::string strtemp;
+
+
+    /* std::string strtemp;
     for(int i=0; i<20; i++){
         rand_string(&strtemp);
         std::cout << strtemp << std::endl;
-    } I COMMENTED OUT FOR NOW
+    } 
     */
+    
     
     /* ***************************************************************
      * Your code will be tested by applying your stack to a custom main
@@ -66,19 +115,7 @@ int main(int argc, char **argv) {
     
     // WHEN YOU SUBMIT, DELETE ALL INSTRUCTIONAL COMMENTS
 
-    int size = atoi(argv[1]);
-
-    if (argc == 2 && size >= 2){
-        std::cout << "Maximum stack size is " << size << std::endl;
-    } else {
-        std::cout << "Error. Only accepts an integer greater than or equal to 2 as input." << std::endl;
-    }
     
-    string testString = "Hello";
-
-    Stack stack(size);
-
-    stack.push(size, &testString);
     
     return 0;
 

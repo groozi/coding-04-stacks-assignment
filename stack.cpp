@@ -17,7 +17,8 @@
  *
  */
 Stack::Stack(int enteredSize){
-    if (!size >= MIN_SIZE){
+    //if input isn't valid throw exception
+    if (!enteredSize >= MIN_SIZE){
         throw -1;
     }
     //this line creates new array of pointers that each point to a data struct
@@ -26,7 +27,8 @@ Stack::Stack(int enteredSize){
     size = enteredSize;
 }
 
-//STACK DESTRUCTOR- must add that destructor checks if the stack is empty, if not must deallocate each pointer
+//STACK DESTRUCTOR- must add that destructor checks if the stack is empty, 
+//if not must deallocate each pointer
 //before deleting the entire array of pointers
 Stack::~Stack(){
     //add implementation to destructor
@@ -40,21 +42,23 @@ bool Stack::push(int id, string *info){
     //checks to see if there is space for one more item to be added to stack
     if (top < size-1){
 
-        //create the pointer to data struct
-        Data *data;
+        if (id > 0 && !info->empty()){
+            //create the pointer to data struct
+            Data *data;
 
-        //allocate the data structure
-        data = new Data;
+            //allocate the data structure
+            data = new Data;
 
-        //assign 
-        data->id = id;
-        data->information = *info;
-        stack[++top] = data;
-        pushed = true;
+            //assign 
+            data->id = id;
+            data->information = *info;
+            stack[++top] = data;
+            pushed = true;
 
-        std::cout << "ID: " << stack[top]->id << " Information: " << stack[top]->information << std::endl;
+            std::cout << "ID: " << stack[top]->id << " Information: " << stack[top]->information << std::endl;
+        }
     }
-
+    
     return pushed;
 }
 

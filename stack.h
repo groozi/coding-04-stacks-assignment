@@ -14,6 +14,7 @@
  */
 
 #include "data.h"
+//#include "main.h"
 #include <iostream> //delete this later
 
 #define MIN_SIZE 2  //delete this later
