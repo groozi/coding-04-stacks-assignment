@@ -1,7 +1,9 @@
-/*
- * your header here
- * 
- */
+/*********************************************
+ * Name: Graziella Buitron
+ * Coding 04
+ * Purpose: To create a stack object that will 
+ * work with a struct data type called Data.
+ *********************************************/
 
 #include "main.h"
 

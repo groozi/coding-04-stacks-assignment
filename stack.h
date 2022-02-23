@@ -1,7 +1,9 @@
-/*
- * Your comment header here
- * modify this file as needed to complete the assignment
- */
+/*********************************************
+ * Name: Graziella Buitron
+ * Coding 04
+ * Purpose: To create a stack object that will 
+ * work with a struct data type called Data.
+ *********************************************/
 
 #ifndef STACK_H
 #define STACK_H
