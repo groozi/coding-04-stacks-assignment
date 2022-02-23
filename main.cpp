@@ -66,7 +66,14 @@ int main(int argc, char **argv) {
     
     // WHEN YOU SUBMIT, DELETE ALL INSTRUCTIONAL COMMENTS
 
-    int size  = 5;
+    int size = atoi(argv[1]);
+
+    if (argc == 2 && size >= 2){
+        std::cout << "Maximum stack size is " << size << std::endl;
+    } else {
+        std::cout << "Error. Only accepts an integer greater than or equal to 2 as input." << std::endl;
+    }
+    
     string testString = "Hello";
 
     Stack stack(size);
@@ -74,4 +81,6 @@ int main(int argc, char **argv) {
     stack.push(size, &testString);
     
     return 0;
+
+
 }
