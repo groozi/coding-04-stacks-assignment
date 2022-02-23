@@ -23,6 +23,12 @@ public:
      * write all your public method prototypes here
      * this includes you constructor and destructor
      */
+
+    //CONSTRUCTORS/DESTRUCTORS
+    Stack(int); //constructor receives int for size
+    ~Stack(); //destructor
+
+
     
 private:
 
@@ -34,6 +40,7 @@ private:
     // do not modify them or add any other attributes
     int top;
     int size;
+    //this is a pointer to a pointer that points to struct datas
     Data **stack;
 };
 
