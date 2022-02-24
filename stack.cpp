@@ -33,9 +33,10 @@ Stack::Stack(int enteredSize){
 
     
     //if input isn't valid throw exception
-    if (!enteredSize >= MIN_SIZE){
+    if (!(enteredSize >= MIN_SIZE)){
         throw -1;
     }
+
     //this line creates new array of pointers that each point to a data struct
     stack = new Data*[enteredSize];
     top = -1;
@@ -94,7 +95,9 @@ bool Stack::pop(Data *ref){
         //'return' data to caller but not actually
         //return true
         popped = true;
+
     } else{
+        //fill passed Data struct with -1 and empty string
         ref->id = -1;
         ref->information = "";
     }
@@ -105,6 +108,7 @@ bool Stack::isEmpty(){
     return top < 0;
 }
 
+//strictly for debugging purposes
 void Stack::dumpStack(){
     std::cout << "Dumping the stack.. " << std::endl;
     if(!isEmpty()){
@@ -116,6 +120,31 @@ void Stack::dumpStack(){
     }
 
 }
+
+bool Stack::peek(Data *ref){
+    bool peek = false;
+
+    if (!isEmpty()){
+        //get data from top of stack and put it in struct data
+        ref->id = stack[top]->id;
+        ref->information = stack[top]->information;
+
+        std::cout << "ID: " << ref->id << " Information: " << ref->information << std::endl;
+
+        //'return' data to caller but not actually
+        //return true
+        peek = true;
+
+    } else{
+        //fill passed Data struct with -1 and empty string
+        ref->id = -1;
+        ref->information = "";
+    }
+    
+    return peek;
+
+}
+
 
 
 

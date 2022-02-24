@@ -35,7 +35,7 @@ public:
     //function prototypes
     bool push(int, string*);
     bool pop(Data*);
-   // bool peek();
+    bool peek(Data*);
     bool isEmpty();
 
     void dumpStack(); //for debugging purposes only

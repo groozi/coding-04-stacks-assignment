@@ -24,54 +24,56 @@ int main(int argc, char **argv) {
      * and you may not use exit() or anything like that.
      * ***************************************************************/
 
-/*
+/*  MESSING AROUND WITH TESTING TO VALIDATE INPUT FROM COMMAND LINE
     int size;
-
     if (!argc == 2){
         size = atoi(argv[1]);
     }
-
-       try {
-         Stack myStack(size);
+    try {
+        Stack myStack(size);
     }
     catch (...){
-
         std::cout << "CAUGHT ERROR. Invalid input. Must enter  integer greater than or equal to 2." << std::endl;
     }
 */
 
-    int size;
+    //CURRENTLY TRYING
+    int size = atoi(argv[1]);
 
-    if (argc == 2){
-        size = atoi(argv[1]);
+    if (argc  != 2){
 
-        if (size >= 2){
-        std::cout << "Max size of the stack is: " << size << std::endl;
-        }
-    
-    } else {
-        size = -1;
-        std::cout << "Please pass only one integer for your stack size." << std::endl;
+        std::cout << "Please pass an integer for your stack size." << std::endl;
     }
 
     try {
          Stack myStack(size);
     }
-    catch (...){
+      catch (...){
 
         std::cout << "CAUGHT ERROR. Invalid input. Must enter 1 integer greater than or equal to 2." << std::endl;
     }
 
 
+    /*
+    size = atoi(argv[1]);
 
+    if (size >= 2){
+        std::cout << "Max size of the stack is: " << size << std::endl;
+    } else {
+        size = 0;
+        std::cout << "Please pass only one integer for your stack size." << std::endl;
+    }
 
-
-
-
+    try {
+        Stack myStack(size);
+    }
+    catch (...){
+        std::cout << "CAUGHT ERROR. Invalid input. Must enter 1 integer greater than or equal to 2." << std::endl;
+    }
+*/
 
 /*
     //variable size receives string input from command line turns to int
-
     int size = atoi(argv[1]);
 
     //if received argument is not valid, print error message
@@ -82,21 +84,19 @@ int main(int argc, char **argv) {
       std::cout << "Invalid input.  Please enter an integer greater than or equal to 2 to make a stack." << std::endl;
     }
     
-
     try {
-         Stack myStack(size);
+        Stack myStack(size);
     }
     catch (...){
-
         std::cout << "CAUGHT ERROR. Invalid input. Must enter  integer greater than or equal to 2." << std::endl;
     }
     */
 
+
     //creating the stack
-   Stack stack(size);
+    Stack stack(size);
 
-   //testing push with random strings and int from 0 to size*1.5
-
+    //testing push with random strings and int from 0 to size*1.5
     std::string strtemp;
 
     for(int i=0; i< size*1.5; i++){
@@ -118,6 +118,7 @@ int main(int argc, char **argv) {
     }
 
     stack.dumpStack();
+    std::cout << std::endl;  
 
         //making pointer to an empty data struct to pass to pop
         Data *data;
@@ -131,8 +132,39 @@ int main(int argc, char **argv) {
         else {
             std::cout << "Underflow error :(" << std::endl;
         }
+        std::cout << std::endl;
 
+    stack.dumpStack();
+
+        //stack.pop(data);
+        //std::cout << "Data's id: " << data->id << " Data's info: " << data->information << std::endl;
+
+       
+       // std::cout << stack.peek(data)->id << stack.peek(data)->information << std::endl;
+        //stack.pop(data);
+
+        std::cout << "Testing pop again. Popping.... " << std::endl;
+        std::cout << std::endl;
+        stack.pop(data);
         stack.dumpStack();
+
+        //Data *dataPtr;
+        //dataPtr = new Data;
+
+        std::cout << std::endl;
+        std::cout << "Peeking...." << std::endl;
+
+        if(stack.peek(data)){
+            std::cout << data->id << " " << data->information << std::endl;
+        } 
+        else{
+            std::cout << "Peek unsuccessful" << std::endl;
+        }
+        
+        std::cout << std::endl;
+        stack.dumpStack();
+
+
 
         
 
@@ -171,8 +203,6 @@ int main(int argc, char **argv) {
     
     
     // make 20 random strings, store them, display them
-
-
     /* std::string strtemp;
     for(int i=0; i<20; i++){
         rand_string(&strtemp);
