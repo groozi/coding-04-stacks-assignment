@@ -37,7 +37,6 @@ public:
     bool pop(Data*);
     bool peek(Data*);
     bool isEmpty();
-
     void dumpStack(); //for debugging purposes only
 
 

@@ -73,6 +73,7 @@ bool Stack::push(int id, string *info){
             stack[++top] = data;
             pushed = true;
 
+            //remove print statement later. this is for debugging to see if we pushed what we want
             std::cout << "ID: " << stack[top]->id << " Information: " << stack[top]->information << std::endl;
         }
     }
@@ -82,10 +83,16 @@ bool Stack::push(int id, string *info){
 bool Stack::pop(Data *ref){
     bool popped = false;
 
+    //check if stack is empty. if not empty...
     if (!isEmpty()){
-        //get data from top of stack and put it in struct data
-        stack[top]->id = ref->id;
-        stack[top]->information = ref->information;
+
+        //get data from top of stack and put it in struct data passed from caller
+        //stack[top]->id = ref->id;
+        //stack[top]->information = ref->information;
+
+        ref->id = stack[top]->id;
+        ref->information = stack[top]->information;
+
 
         //delete the allocated memory from the top of the stack
         delete stack[top];

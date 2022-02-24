@@ -24,6 +24,122 @@ int main(int argc, char **argv) {
      * and you may not use exit() or anything like that.
      * ***************************************************************/
 
+    if (argc == 2){
+
+        //receives input from command line and converts second argument to int
+        int size; 
+
+        if ((size = atoi(argv[1])) && size >= 2) {
+            try{
+                ////////////////////////////////// TEST BLOCK FROM BELOW MOVED UP //////////////////////////
+
+                //creating the stack
+                Stack stack(size);
+
+                //testing push with random strings and int from 0 to size*1.5
+                std::string strtemp;
+
+                for(int i=0; i< size*1.5; i++){
+
+                    rand_string(&strtemp);
+                    std::cout << "Random String: " << strtemp << std::endl;
+                    std::cout << "Pushing... ";
+
+                    if (strtemp.empty() || i <= 0){
+                        std::cout << "Error. Int for id must be greater than 0 and string information cannot be empty." << std::endl;
+                    }
+                    else if(stack.push(i, &strtemp)){
+                        std::cout << "Push successful. " << std::endl;
+                    }
+                    else {
+                        std::cout << "Overflow error." << std::endl;
+                    }
+                    std::cout << std::endl;
+                }
+
+                //dumping stack for debugging
+                stack.dumpStack();
+                std::cout << std::endl;  
+
+                //making pointer to an empty data struct to pass to pop
+                Data *data;
+                data = new Data;
+
+                std::cout << "Tesing pop function.." << std::endl;
+
+                if (stack.pop(data)){
+                    std::cout << "Pop successful!" << std::endl;
+                }
+                else {
+                    std::cout << "Underflow error :(" << std::endl;
+                }
+
+                //dumping stack for debugging
+                std::cout << std::endl;
+                stack.dumpStack();
+
+                std::cout << "Testing pop again. Popping.... " << std::endl;
+                std::cout << std::endl;
+                stack.pop(data);
+                stack.dumpStack();
+
+                //Data *dataPtr;
+                //dataPtr = new Data;
+
+                //testing peek function
+                std::cout << std::endl;
+                std::cout << "Peeking...." << std::endl;
+
+                //if peek was successful, print data struct's id and info
+                if(stack.peek(data)){
+                    std::cout << data->id << " " << data->information << std::endl;
+                } 
+                else{
+                    std::cout << "Peek unsuccessful" << std::endl;
+                }
+
+                std::cout << std::endl;
+                stack.dumpStack();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+            catch(...){
+
+
+            }
+
+
+
+        }
+        else {
+            std::cout << "Error. Must input an integer "
+        }
+
+    } else {
+        std::cout << "Error. Must only enter 1 argument."
+    }
+
+
+
+
+
 /*  MESSING AROUND WITH TESTING TO VALIDATE INPUT FROM COMMAND LINE
     int size;
     if (!argc == 2){
@@ -37,6 +153,7 @@ int main(int argc, char **argv) {
     }
 */
 
+    /*
     //CURRENTLY TRYING
     int size = atoi(argv[1]);
 
@@ -44,7 +161,9 @@ int main(int argc, char **argv) {
 
         std::cout << "Please pass an integer for your stack size." << std::endl;
     }
+    */
 
+   /*
     try {
          Stack myStack(size);
     }
@@ -53,6 +172,7 @@ int main(int argc, char **argv) {
         std::cout << "CAUGHT ERROR. Invalid input. Must enter 1 integer greater than or equal to 2." << std::endl;
     }
 
+    */
 
     /*
     size = atoi(argv[1]);
@@ -93,6 +213,7 @@ int main(int argc, char **argv) {
     */
 
 
+    /*
     //creating the stack
     Stack stack(size);
 
@@ -134,14 +255,7 @@ int main(int argc, char **argv) {
         }
         std::cout << std::endl;
 
-    stack.dumpStack();
-
-        //stack.pop(data);
-        //std::cout << "Data's id: " << data->id << " Data's info: " << data->information << std::endl;
-
-       
-       // std::cout << stack.peek(data)->id << stack.peek(data)->information << std::endl;
-        //stack.pop(data);
+        stack.dumpStack();
 
         std::cout << "Testing pop again. Popping.... " << std::endl;
         std::cout << std::endl;
@@ -160,13 +274,13 @@ int main(int argc, char **argv) {
         else{
             std::cout << "Peek unsuccessful" << std::endl;
         }
-        
+
         std::cout << std::endl;
         stack.dumpStack();
 
 
-
-        
+    
+        */
 
 
 
