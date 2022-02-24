@@ -34,9 +34,11 @@ public:
 
     //function prototypes
     bool push(int, string*);
-   // bool pop();
+    bool pop(Data*);
    // bool peek();
     bool isEmpty();
+
+    void dumpStack(); //for debugging purposes only
 
 
     

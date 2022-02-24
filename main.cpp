@@ -46,21 +46,45 @@ int main(int argc, char **argv) {
    Stack stack(size);
 
    //testing push with random strings and int from 1-20
+
     std::string strtemp;
-    for(int i=0; i<20; i++){
+
+    for(int i=0; i< size*1.5; i++){
 
         rand_string(&strtemp);
-
         std::cout << "Random String: " << strtemp << std::endl;
         std::cout << "Pushing... ";
 
-        if(stack.push(i, &strtemp)){
+        if (strtemp.empty() || i <= 0){
+            std::cout << "Error. Int for id must be greater than 0 and string information cannot be empty." << std::endl;
+        }
+        else if(stack.push(i, &strtemp)){
             std::cout << "Push successful. " << std::endl;
-        } else {
-            std::cout << "Error. Int for id must be a positive number and string cannot be empty." << std::endl;
+        }
+        else {
+            std::cout << "Overflow error." << std::endl;
         }
         std::cout << std::endl;
-    } 
+    }
+
+    stack.dumpStack();
+
+        //making pointer to an empty data struct to pass to pop
+        Data *data;
+        data = new Data;
+
+        std::cout << "Tesing pop function.." << std::endl;
+
+        if (stack.pop(data)){
+            std::cout << "Pop successful!" << std::endl;
+        }
+        else {
+            std::cout << "Underflow error :(" << std::endl;
+        }
+
+        stack.dumpStack();
+
+        
 
 
 
@@ -118,6 +142,7 @@ int main(int argc, char **argv) {
     
     
     return 0;
+
 
 
 }

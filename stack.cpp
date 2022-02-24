@@ -41,7 +41,6 @@ bool Stack::push(int id, string *info){
 
     //checks to see if there is space for one more item to be added to stack
     if (top < size-1){
-
         if (id > 0 && !info->empty()){
             //create the pointer to data struct
             Data *data;
@@ -58,12 +57,46 @@ bool Stack::push(int id, string *info){
             std::cout << "ID: " << stack[top]->id << " Information: " << stack[top]->information << std::endl;
         }
     }
-    
     return pushed;
+}
+
+bool Stack::pop(Data *ref){
+    bool popped = false;
+
+    if (!isEmpty()){
+        //get data from top of stack and put it in struct data
+        stack[top]->id = ref->id;
+        stack[top]->information = ref->information;
+
+        //delete the allocated memory from the top of the stack
+        delete stack[top];
+        //decrement the stack counter
+        top--; 
+
+        //'return' data to caller but not actually
+        //return true
+        popped = true;
+    } else{
+        ref->id = -1;
+        ref->information = "";
+    }
+    return popped;
 }
 
 bool Stack::isEmpty(){
     return top < 0;
+}
+
+void Stack::dumpStack(){
+    std::cout << "Dumping the stack.. " << std::endl;
+    if(!isEmpty()){
+        for (int i = top; i >=0; i--){
+            std::cout << "Stack at " << i << " ID: " << stack[i]->id << " Information: " << stack[i]->information << std::endl;
+        }
+    } else {
+        std::cout << "The stack is empty! :(" << std::endl;
+    }
+
 }
 
 
