@@ -17,6 +17,21 @@
  *
  */
 Stack::Stack(int enteredSize){
+
+    /*
+
+    if (enteredSize >= MIN_SIZE){
+        size = enteredSize;
+    } else{
+        size = MIN_SIZE;
+    }
+
+    //this line creates new array of pointers that each point to a data struct
+    stack = new Data*[size];
+    top = -1;
+    */
+
+    
     //if input isn't valid throw exception
     if (!enteredSize >= MIN_SIZE){
         throw -1;
@@ -25,7 +40,10 @@ Stack::Stack(int enteredSize){
     stack = new Data*[enteredSize];
     top = -1;
     size = enteredSize;
+    
+
 }
+
 
 //STACK DESTRUCTOR- must add that destructor checks if the stack is empty, 
 //if not must deallocate each pointer

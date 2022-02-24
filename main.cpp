@@ -24,28 +24,78 @@ int main(int argc, char **argv) {
      * and you may not use exit() or anything like that.
      * ***************************************************************/
 
+/*
+    int size;
+
+    if (!argc == 2){
+        size = atoi(argv[1]);
+    }
+
+       try {
+         Stack myStack(size);
+    }
+    catch (...){
+
+        std::cout << "CAUGHT ERROR. Invalid input. Must enter  integer greater than or equal to 2." << std::endl;
+    }
+*/
+
+    int size;
+
+    if (argc == 2){
+        size = atoi(argv[1]);
+
+        if (size >= 2){
+        std::cout << "Max size of the stack is: " << size << std::endl;
+        }
+    
+    } else {
+        size = -1;
+        std::cout << "Please pass only one integer for your stack size." << std::endl;
+    }
+
+    try {
+         Stack myStack(size);
+    }
+    catch (...){
+
+        std::cout << "CAUGHT ERROR. Invalid input. Must enter 1 integer greater than or equal to 2." << std::endl;
+    }
+
+
+
+
+
+
+
+
+/*
     //variable size receives string input from command line turns to int
+
     int size = atoi(argv[1]);
 
     //if received argument is not valid, print error message
     if (argc == 2 && size >= 2){
         std::cout << "Maximum stack size is " << size << std::endl << std::endl;
-
-    } else {
-        std::cout << "Error. ";
+    } 
+    else {
+      std::cout << "Invalid input.  Please enter an integer greater than or equal to 2 to make a stack." << std::endl;
     }
+    
 
     try {
-         Stack stack(size);
+         Stack myStack(size);
     }
     catch (...){
-        std::cout << "Invalid input.  Please enter integer greater than or equal to 2." << std::endl;
+
+        std::cout << "CAUGHT ERROR. Invalid input. Must enter  integer greater than or equal to 2." << std::endl;
     }
+    */
 
     //creating the stack
    Stack stack(size);
 
-   //testing push with random strings and int from 1-20
+   //testing push with random strings and int from 0 to size*1.5
 
     std::string strtemp;
 
