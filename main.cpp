@@ -30,15 +30,26 @@ int main(int argc, char **argv) {
         int size; 
 
         if ((size = atoi(argv[1])) && size >= 2) {
-            try{
-                ////////////////////////////////// TEST BLOCK FROM BELOW MOVED UP //////////////////////////
+            ////////////////////////////////// TEST BLOCK FROM BELOW MOVED UP //////////////////////////
 
-                //creating the stack
-                Stack stack(size);
+            //creating the stack
+            Stack stack(size);
 
-                //testing push with random strings and int from 0 to size*1.5
-                std::string strtemp;
+            //testing push with random strings and int from 0 to size*1.5
+            std::string strtemp;
 
+           
+
+        }
+        else {
+            std::cout << "Error. Must input an integer of size 2 or greater to create the stack. " << std::endl;
+        }
+
+    } else {
+        std::cout << "Error. Must only enter 1 argument." << std::endl;
+    }
+
+    /*
                 for(int i=0; i< size*1.5; i++){
 
                     rand_string(&strtemp);
@@ -101,116 +112,9 @@ int main(int argc, char **argv) {
                 std::cout << std::endl;
                 stack.dumpStack();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            }
-
-            catch(...){
-
-
-            }
-
-
-
-        }
-        else {
-            std::cout << "Error. Must input an integer "
-        }
-
-    } else {
-        std::cout << "Error. Must only enter 1 argument."
-    }
-
-
-
-
-
-/*  MESSING AROUND WITH TESTING TO VALIDATE INPUT FROM COMMAND LINE
-    int size;
-    if (!argc == 2){
-        size = atoi(argv[1]);
-    }
-    try {
-        Stack myStack(size);
-    }
-    catch (...){
-        std::cout << "CAUGHT ERROR. Invalid input. Must enter  integer greater than or equal to 2." << std::endl;
-    }
-*/
-
-    /*
-    //CURRENTLY TRYING
-    int size = atoi(argv[1]);
-
-    if (argc  != 2){
-
-        std::cout << "Please pass an integer for your stack size." << std::endl;
-    }
     */
 
-   /*
-    try {
-         Stack myStack(size);
-    }
-      catch (...){
 
-        std::cout << "CAUGHT ERROR. Invalid input. Must enter 1 integer greater than or equal to 2." << std::endl;
-    }
-
-    */
-
-    /*
-    size = atoi(argv[1]);
-
-    if (size >= 2){
-        std::cout << "Max size of the stack is: " << size << std::endl;
-    } else {
-        size = 0;
-        std::cout << "Please pass only one integer for your stack size." << std::endl;
-    }
-
-    try {
-        Stack myStack(size);
-    }
-    catch (...){
-        std::cout << "CAUGHT ERROR. Invalid input. Must enter 1 integer greater than or equal to 2." << std::endl;
-    }
-*/
-
-/*
-    //variable size receives string input from command line turns to int
-    int size = atoi(argv[1]);
-
-    //if received argument is not valid, print error message
-    if (argc == 2 && size >= 2){
-        std::cout << "Maximum stack size is " << size << std::endl << std::endl;
-    } 
-    else {
-      std::cout << "Invalid input.  Please enter an integer greater than or equal to 2 to make a stack." << std::endl;
-    }
-    
-    try {
-        Stack myStack(size);
-    }
-    catch (...){
-        std::cout << "CAUGHT ERROR. Invalid input. Must enter  integer greater than or equal to 2." << std::endl;
-    }
-    */
 
 
     /*
@@ -237,49 +141,6 @@ int main(int argc, char **argv) {
         }
         std::cout << std::endl;
     }
-
-    stack.dumpStack();
-    std::cout << std::endl;  
-
-        //making pointer to an empty data struct to pass to pop
-        Data *data;
-        data = new Data;
-
-        std::cout << "Tesing pop function.." << std::endl;
-
-        if (stack.pop(data)){
-            std::cout << "Pop successful!" << std::endl;
-        }
-        else {
-            std::cout << "Underflow error :(" << std::endl;
-        }
-        std::cout << std::endl;
-
-        stack.dumpStack();
-
-        std::cout << "Testing pop again. Popping.... " << std::endl;
-        std::cout << std::endl;
-        stack.pop(data);
-        stack.dumpStack();
-
-        //Data *dataPtr;
-        //dataPtr = new Data;
-
-        std::cout << std::endl;
-        std::cout << "Peeking...." << std::endl;
-
-        if(stack.peek(data)){
-            std::cout << data->id << " " << data->information << std::endl;
-        } 
-        else{
-            std::cout << "Peek unsuccessful" << std::endl;
-        }
-
-        std::cout << std::endl;
-        stack.dumpStack();
-
-
-    
         */
 
 

@@ -29,12 +29,12 @@ Stack::Stack(int enteredSize){
     //this line creates new array of pointers that each point to a data struct
     stack = new Data*[size];
     top = -1;
+    
     */
 
-    
     //if input isn't valid throw exception
-    if (!(enteredSize >= MIN_SIZE)){
-        throw -1;
+    if (!enteredSize >= MIN_SIZE){
+        size = 2;
     }
 
     //this line creates new array of pointers that each point to a data struct
