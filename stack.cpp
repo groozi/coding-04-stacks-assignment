@@ -17,40 +17,25 @@
  *
  */
 Stack::Stack(int enteredSize){
-
-    /*
-
     if (enteredSize >= MIN_SIZE){
         size = enteredSize;
-    } else{
+    } else {
         size = MIN_SIZE;
     }
-
-    //this line creates new array of pointers that each point to a data struct
     stack = new Data*[size];
-    top = -1;
-    
-    */
-
-    //if input isn't valid throw exception
-    if (!enteredSize >= MIN_SIZE){
-        size = 2;
-    }
-
-    //this line creates new array of pointers that each point to a data struct
-    stack = new Data*[enteredSize];
-    top = -1;
-    size = enteredSize;
-    
-
+    this->top = -1;
 }
-
 
 //STACK DESTRUCTOR- must add that destructor checks if the stack is empty, 
 //if not must deallocate each pointer
 //before deleting the entire array of pointers
 Stack::~Stack(){
-    //add implementation to destructor
+    if (!isEmpty()){
+        for (int i = top; i >= 0; i--){
+            delete stack[i];
+        }
+    }
+    delete[] stack;
 }
 
 
@@ -103,10 +88,12 @@ bool Stack::pop(Data *ref){
         //return true
         popped = true;
 
-    } else{
+    }
+     else{
         //fill passed Data struct with -1 and empty string
         ref->id = -1;
         ref->information = "";
+        throw -1;
     }
     return popped;
 }

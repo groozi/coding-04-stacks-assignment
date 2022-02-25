@@ -7,7 +7,7 @@
 
 #include "main.h"
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv){
     // here for the rand_string() function
     // if you don't use it, get rid of this
     srand(time(NULL));
@@ -24,6 +24,82 @@ int main(int argc, char **argv) {
      * and you may not use exit() or anything like that.
      * ***************************************************************/
 
+
+    
+    //first if statement tests if user entered only 2 arguments in command line
+    if (argc == 2){
+
+        int size = atoi(argv[1]);
+
+        //tests if size is valid - an integer and it is greater than or equal to 2
+        //if size is valid, create the stack and begin testing
+        if (size >= 2){
+            //creating the stack 
+            Stack stack(size);
+
+            //allocating an empty Data struct to pass into peek() and pop()
+            Data *data;
+            data = new Data;
+
+
+            std::cout << "Stack of maximum size " << size << " created" << std::endl << std::endl;
+            std::cout << "BEGINNING TESTS.... TESTING EMPTY OPERATIONS" << std::endl;
+            std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+
+            //EMPTY TESTS
+
+            //testing isEmpty on empty stack
+            if (stack.isEmpty()){
+                std::cout << "The stack is empty" << std::endl;
+            }
+            else{
+                std::cout << "stack is NOT empty" << std::endl;
+            }
+
+            //testing peek and then pop on empty stack
+            if (stack.peek())
+  
+
+
+
+
+
+
+
+        }
+        else {
+            std::cout << "Error "
+        }
+
+    } else {
+        std::cout << "Error.... Program can only accept one argument as an int "
+    }
+
+
+    return 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+
     if (argc == 2){
 
         //receives input from command line and converts second argument to int
@@ -34,12 +110,13 @@ int main(int argc, char **argv) {
 
             //creating the stack
             Stack stack(size);
+            std::cout << "Making the stack... max stack size is " << size << std::endl;  
+        }
 
-            //testing push with random strings and int from 0 to size*1.5
-            std::string strtemp;
+        else if (size = atoi(argv[1])){
 
-           
-
+            std::cout << "Size invalid to create stack. Default stack size set to 2. " << std::endl;
+            Stack stack(size);
         }
         else {
             std::cout << "Error. Must input an integer of size 2 or greater to create the stack. " << std::endl;
@@ -48,6 +125,19 @@ int main(int argc, char **argv) {
     } else {
         std::cout << "Error. Must only enter 1 argument." << std::endl;
     }
+
+    */
+
+
+
+ //testing push with random strings and int from 0 to size*1.5
+    //        std::string strtemp;
+
+
+
+
+
+
 
     /*
                 for(int i=0; i< size*1.5; i++){
@@ -196,7 +286,7 @@ int main(int argc, char **argv) {
 
     
     
-    return 0;
+    //return 0;
 
 
 
