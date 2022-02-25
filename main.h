@@ -17,7 +17,7 @@
 
 #define MULTIPLIER 2.5 //used to run tests for overflow and underflow
 #define NARROW .30 //percent multiplier to test narrow band of stack
-#define RANDOM_MULTIPLIER 10
+#define RANDOM_MULTIPLIER 12
 #define CHOICES 6 //amount of choices for switch case in random testing
 #define MAX_INT 100000 
 
