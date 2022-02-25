@@ -359,177 +359,15 @@ int main(int argc, char **argv){
     }
 
 
-
-
     return 0;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-
-    if (argc == 2){
-
-        //receives input from command line and converts second argument to int
-        int size; 
-
-        if ((size = atoi(argv[1])) && size >= 2) {
-            ////////////////////////////////// TEST BLOCK FROM BELOW MOVED UP //////////////////////////
-
-            //creating the stack
-            Stack stack(size);
-            std::cout << "Making the stack... max stack size is " << size << std::endl;  
-        }
-
-        else if (size = atoi(argv[1])){
-
-            std::cout << "Size invalid to create stack. Default stack size set to 2. " << std::endl;
-            Stack stack(size);
-        }
-        else {
-            std::cout << "Error. Must input an integer of size 2 or greater to create the stack. " << std::endl;
-        }
-
-    } else {
-        std::cout << "Error. Must only enter 1 argument." << std::endl;
-    }
-
-    */
-
-
-
- //testing push with random strings and int from 0 to size*1.5
-    //        std::string strtemp;
-
-
-
-
-
-
-
-    /*
-                for(int i=0; i< size*1.5; i++){
-
-                    rand_string(&strtemp);
-                    std::cout << "Random String: " << strtemp << std::endl;
-                    std::cout << "Pushing... ";
-
-                    if (strtemp.empty() || i <= 0){
-                        std::cout << "Error. Int for id must be greater than 0 and string information cannot be empty." << std::endl;
-                    }
-                    else if(stack.push(i, &strtemp)){
-                        std::cout << "Push successful. " << std::endl;
-                    }
-                    else {
-                        std::cout << "Overflow error." << std::endl;
-                    }
-                    std::cout << std::endl;
-                }
-
-                //dumping stack for debugging
-                stack.dumpStack();
-                std::cout << std::endl;  
-
-                //making pointer to an empty data struct to pass to pop
-                Data *data;
-                data = new Data;
-
-                std::cout << "Tesing pop function.." << std::endl;
-
-                if (stack.pop(data)){
-                    std::cout << "Pop successful!" << std::endl;
-                }
-                else {
-                    std::cout << "Underflow error :(" << std::endl;
-                }
-
-                //dumping stack for debugging
-                std::cout << std::endl;
-                stack.dumpStack();
-
-                std::cout << "Testing pop again. Popping.... " << std::endl;
-                std::cout << std::endl;
-                stack.pop(data);
-                stack.dumpStack();
-
-                //Data *dataPtr;
-                //dataPtr = new Data;
-
-                //testing peek function
-                std::cout << std::endl;
-                std::cout << "Peeking...." << std::endl;
-
-                //if peek was successful, print data struct's id and info
-                if(stack.peek(data)){
-                    std::cout << data->id << " " << data->information << std::endl;
-                } 
-                else{
-                    std::cout << "Peek unsuccessful" << std::endl;
-                }
-
-                std::cout << std::endl;
-                stack.dumpStack();
-
-    */
-
-
-
-
-    /*
-    //creating the stack
-    Stack stack(size);
-
-    //testing push with random strings and int from 0 to size*1.5
-    std::string strtemp;
-
-    for(int i=0; i< size*1.5; i++){
-
-        rand_string(&strtemp);
-        std::cout << "Random String: " << strtemp << std::endl;
-        std::cout << "Pushing... ";
-
-        if (strtemp.empty() || i <= 0){
-            std::cout << "Error. Int for id must be greater than 0 and string information cannot be empty." << std::endl;
-        }
-        else if(stack.push(i, &strtemp)){
-            std::cout << "Push successful. " << std::endl;
-        }
-        else {
-            std::cout << "Overflow error." << std::endl;
-        }
-        std::cout << std::endl;
-    }
-        */
-
-
-
-    
     /* ***************************************************************
      * Use the number passed in from the command line and declare a stack
      * that uses that number as the size of the stack. NOTE: Make sure
      * your stack ALSO checks the number passed in to it. You cannot rely
      * on main checking the number first. This will be tested during grading.
      * ***************************************************************/
-
-
-
 
 
 
@@ -568,10 +406,6 @@ int main(int argc, char **argv){
      * ***************************************************************/
     
     // WHEN YOU SUBMIT, DELETE ALL INSTRUCTIONAL COMMENTS
-
-    
-    
-    //return 0;
 
 
 
