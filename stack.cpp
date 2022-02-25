@@ -11,7 +11,7 @@
 Stack::Stack(int enteredSize){
     if (enteredSize >= MIN_SIZE){
         size = enteredSize;
-    }else {
+    }else{
         size = MIN_SIZE;
     }
     stack = new Data*[size];
