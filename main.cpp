@@ -12,18 +12,6 @@ int main(int argc, char **argv){
     // if you don't use it, get rid of this
     srand(time(NULL));
 
-    /* ***************************************************************
-     * First get your arguments from the command line. Your program must
-     * accept one and only one argument not including the program name
-     * itself. That argument must be an integer between 2 and any
-     * number (i.e. >= 2). If anything else is entered in any way,
-     * terminate the program with a suitable error message telling the
-     * user how to use your program correctly.
-     * 
-     * Remember, you may not use more than one return, even in main()
-     * and you may not use exit() or anything like that.
-     * ***************************************************************/
-
     
     //first if statement tests if user entered only 2 arguments in command line
     if (argc == 2){
@@ -34,6 +22,7 @@ int main(int argc, char **argv){
         //tests if size is valid - an integer and it is greater than or equal to 2
         //if size is valid, create the stack and begin testing
         if (size >= 2){
+
             //creating the stack 
             Stack stack(size);
 
@@ -130,8 +119,6 @@ int main(int argc, char **argv){
                 std::cout << "pop  underflow error... stack is empty" << std::endl;
             }
 
-            std::cout << std::endl;
-            stack.dumpStack();
             std::cout << std::endl;
 
             /*******************************************
@@ -338,17 +325,12 @@ int main(int argc, char **argv){
 
                 choice = rand() % CHOICES + 1;
                 rand_string(&strtemp);   
-                stack.dumpStack();
-            std::cout << std::endl; 
+                std::cout << std::endl; 
             }
 
             std::cout << std::endl;
-            stack.dumpStack();
-            std::cout << std::endl;
 
-
-
-        delete data;
+            delete data;
         }
         else {
             std::cout << "Error.. can only accept an integer for stack size." << std::endl;
@@ -361,15 +343,12 @@ int main(int argc, char **argv){
 
     return 0;
 
-
     /* ***************************************************************
      * Use the number passed in from the command line and declare a stack
      * that uses that number as the size of the stack. NOTE: Make sure
      * your stack ALSO checks the number passed in to it. You cannot rely
      * on main checking the number first. This will be tested during grading.
      * ***************************************************************/
-
-
 
     
     /* ***************************************************************
@@ -388,7 +367,6 @@ int main(int argc, char **argv){
      * only here to demonstrate the function. DELETE it once you study
      * it and understand it and can use it yourself in your code.
      * ***************************************************************/
-    
     
     // make 20 random strings, store them, display them
     /* std::string strtemp;

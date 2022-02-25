@@ -17,7 +17,7 @@
 //#include "main.h"
 #include <iostream> //delete this later
 
-#define MIN_SIZE 2  //delete this later
+#define MIN_SIZE 2  //minimum size for stack
 
 class Stack {
 
@@ -37,8 +37,6 @@ public:
     bool pop(Data*);
     bool peek(Data*);
     bool isEmpty();
-    void dumpStack(); //for debugging purposes only
-
 
     
 private:

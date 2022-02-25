@@ -5,61 +5,42 @@
  * work with a struct data type called Data.
  *********************************************/
 
-// each cpp includes ONLY it's header directly
 #include "stack.h"
 
-/*
- * write all your stack methods here
- */
-
-/*constructor for stack. receives int for size
- * when called, creates pointer 
- *
- */
+//constructor for stack. if entered size is invalid, sets stack size to default minimum.. 2
 Stack::Stack(int enteredSize){
     if (enteredSize >= MIN_SIZE){
         size = enteredSize;
-    } else {
+    }else {
         size = MIN_SIZE;
     }
     stack = new Data*[size];
     this->top = -1;
 }
 
-//STACK DESTRUCTOR- must add that destructor checks if the stack is empty, 
-//if not must deallocate each pointer
-//before deleting the entire array of pointers
+//destructor dellocates each pointer in stack then deletes stack itself
 Stack::~Stack(){
-    if (!isEmpty()){
-        for (int i = top; i >= 0; i--){
-            delete stack[i];
-        }
+    for (int i = top; i >= 0; i--){
+        delete stack[i];
     }
     delete[] stack;
 }
 
-
-//PUSH FUNCTION
 bool Stack::push(int id, string *info){
     bool pushed = false;
 
-    //checks to see if there is space for one more item to be added to stack
-    if (top < size-1){
+    if (top < size - 1){
+        //validation that id is non negative and string in non-empty
         if (id > 0 && !info->empty()){
-            //create the pointer to data struct
+            //creates the pointer to a Data struct then allocates the new Data struct
             Data *data;
-
-            //allocate the data structure
             data = new Data;
 
-            //assign 
+            //assigning data to new Data struct
             data->id = id;
             data->information = *info;
             stack[++top] = data;
             pushed = true;
-
-            //remove print statement later. this is for debugging to see if we pushed what we want
-            //std::cout << "ID: " << stack[top]->id << " Information: " << stack[top]->information << std::endl;
         }
     }
     return pushed;
@@ -68,77 +49,38 @@ bool Stack::push(int id, string *info){
 bool Stack::pop(Data *ref){
     bool popped = false;
 
-    //check if stack is empty. if not empty...
     if (!isEmpty()){
-
-        //get data from top of stack and put it in struct data passed from caller
-        //stack[top]->id = ref->id;
-        //stack[top]->information = ref->information;
-
+        //gets data from Data struct at top of stack and puts it in empty Data struct passed from caller
         ref->id = stack[top]->id;
         ref->information = stack[top]->information;
 
-
-        //delete the allocated memory from the top of the stack
+        //deletes allocated memory for Data struct at top of stack
         delete stack[top];
-        //decrement the stack counter
         top--; 
-
-        //'return' data to caller but not actually
-        //return true
         popped = true;
-
-    }
-     else{
-        //fill passed Data struct with -1 and empty string
+    }else{
         ref->id = -1;
         ref->information = "";
     }
     return popped;
 }
 
-bool Stack::isEmpty(){
-    return top < 0;
-}
-
-//strictly for debugging purposes
-void Stack::dumpStack(){
-    std::cout << "Dumping the stack.. " << std::endl;
-    if(!isEmpty()){
-        for (int i = top; i >=0; i--){
-            std::cout << "Stack at " << i << " ID: " << stack[i]->id << " Information: " << stack[i]->information << std::endl;
-        }
-    } else {
-        std::cout << "The stack is empty! :(" << std::endl;
-    }
-
-}
-
 bool Stack::peek(Data *ref){
     bool peek = false;
 
     if (!isEmpty()){
-        //get data from top of stack and put it in struct data
+        //get data from top of stack and puts it in struct data
         ref->id = stack[top]->id;
         ref->information = stack[top]->information;
-
-        //'return' data to caller but not actually
-        //return true
         peek = true;
-
-    } else{
+    }else{
         //fill passed Data struct with -1 and empty string
         ref->id = -1;
         ref->information = "";
-    }
-    
+    }   
     return peek;
-
 }
 
-
-
-
-
-
-
+bool Stack::isEmpty(){
+    return top < 0;
+}
