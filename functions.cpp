@@ -28,4 +28,3 @@ void rand_string(std::string *str){
     delete buffer;
     return;
 }
-
