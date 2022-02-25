@@ -8,25 +8,17 @@
 #ifndef STACKS_MAIN_H
 #define STACKS_MAIN_H
 
-// you probably need all these,
-// but if you don't get rid of what you don't need
-#include <stdlib.h>   /* srand, rand */
-#include <time.h>     /* time */
-#include <iostream>   /* cout, endl */
-#include <string>     /* string */
+#include <stdlib.h>
+#include <time.h>
+#include <iostream>
+#include <string>
 #include "functions.h"
-
-/*
- * additional directives here
- * 
- */
-
-#define MULTIPLIER 2.5 // used to test overflow and underflow
-#define NARROW .30 // percent of the stack for a narrow band
-#define RANDOM_MULTIPLIER 10
-#define CHOICES 6 // used to pick random operations
-#define MAX_INT 100000 
-
 #include "stack.h"
+
+#define MULTIPLIER 2.5 //used to run tests for overflow and underflow
+#define NARROW .30 //percent multiplier to test narrow band of stack
+#define RANDOM_MULTIPLIER 10
+#define CHOICES 6 //amount of choices for switch case in random testing
+#define MAX_INT 100000 
 
 #endif /* STACKS_MAIN_H */
