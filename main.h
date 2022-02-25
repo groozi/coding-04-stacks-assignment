@@ -21,6 +21,12 @@
  * 
  */
 
+#define MULTIPLIER 2.5 // used to test overflow and underflow
+#define NARROW .30 // percent of the stack for a narrow band
+#define RANDOM_MULTIPLIER 10
+#define CHOICES 6 // used to pick random operations
+#define MAX_INT 100000 
+
 #include "stack.h"
 
 #endif /* STACKS_MAIN_H */

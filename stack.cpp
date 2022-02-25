@@ -59,7 +59,7 @@ bool Stack::push(int id, string *info){
             pushed = true;
 
             //remove print statement later. this is for debugging to see if we pushed what we want
-            std::cout << "ID: " << stack[top]->id << " Information: " << stack[top]->information << std::endl;
+            //std::cout << "ID: " << stack[top]->id << " Information: " << stack[top]->information << std::endl;
         }
     }
     return pushed;
@@ -93,7 +93,6 @@ bool Stack::pop(Data *ref){
         //fill passed Data struct with -1 and empty string
         ref->id = -1;
         ref->information = "";
-        throw -1;
     }
     return popped;
 }
@@ -122,8 +121,6 @@ bool Stack::peek(Data *ref){
         //get data from top of stack and put it in struct data
         ref->id = stack[top]->id;
         ref->information = stack[top]->information;
-
-        std::cout << "ID: " << ref->id << " Information: " << ref->information << std::endl;
 
         //'return' data to caller but not actually
         //return true

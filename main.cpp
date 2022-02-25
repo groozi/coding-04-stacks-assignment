@@ -24,12 +24,12 @@ int main(int argc, char **argv){
      * and you may not use exit() or anything like that.
      * ***************************************************************/
 
-
     
     //first if statement tests if user entered only 2 arguments in command line
     if (argc == 2){
 
         int size = atoi(argv[1]);
+
 
         //tests if size is valid - an integer and it is greater than or equal to 2
         //if size is valid, create the stack and begin testing
@@ -37,43 +37,328 @@ int main(int argc, char **argv){
             //creating the stack 
             Stack stack(size);
 
-            //allocating an empty Data struct to pass into peek() and pop()
+
+            //allocating an empty Data struct to pass into peek() and pop() for testing purposes
             Data *data;
             data = new Data;
 
+            //declaring variables we need for testing
+            int testValue;
+            std::string strtemp;
+
 
             std::cout << "Stack of maximum size " << size << " created" << std::endl << std::endl;
-            std::cout << "BEGINNING TESTS.... TESTING EMPTY OPERATIONS" << std::endl;
+            std::cout << "BEGINNING TESTS.... " << std::endl;
+            std::cout << "TESTING EMPTY OPERATIONS" << std::endl;
             std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 
             //EMPTY TESTS
 
             //testing isEmpty on empty stack
             if (stack.isEmpty()){
-                std::cout << "The stack is empty" << std::endl;
+                std::cout << "stack is empty" << std::endl;
+            }
+            else{
+                std::cout << "stack is NOT empty" << std::endl;
+            }
+
+            std::cout << std::endl;
+          
+            //testing peek and then pop on empty stack
+            //testing peek function
+            if(stack.peek(data)){
+                std::cout << "peeking... id: " << data->id << " information: " << data->information << std::endl;
+            } 
+            else{
+                std::cout << "peek underflow error: stack is empty" << std::endl;
+            }
+
+            if (stack.pop(data)){
+                std::cout << "pop successful. popped... id: " << data->id << " information: " << data->information << std::endl;
+            }
+            else {
+                std::cout << "pop  underflow error... stack is empty" << std::endl;
+            }
+            std::cout << std::endl;
+
+            /*******************************************
+             ******** FILLING AND FULL TESTS ***********
+             ******************************************/
+            std::cout << "Testing full operations..." << std::endl;
+            std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+            std::cout << "Filling the stack.. " << std::endl;
+
+         
+            for(int i = 0; i < size*MULTIPLIER; i++){
+                testValue = rand()%2 ? -(i + 1) : i+1;
+                rand_string(&strtemp);
+
+                if(stack.push(testValue, &strtemp)){
+                    std::cout << "pushed.. id: " << testValue << " information: " << strtemp<< std::endl;
+                }
+                else if(testValue < 0 || strtemp.empty()){
+
+                    std::cout << testValue << " " << strtemp << std::endl;
+                    std::cout << "error. push requires non-negative int and non empty string." << std::endl;                }
+                else {
+                    std::cout << "overflow error.. could not push id: " << testValue << " information: " << strtemp << std::endl;
+                }
+                    std::cout << std::endl;
+            }
+            std::cout << std::endl;
+
+            //testing isEmpty on full stack
+            if (stack.isEmpty()){
+                std::cout << "stack is empty" << std::endl;
+            }
+            else{
+                std::cout << "stack is NOT empty" << std::endl;
+            }
+
+            //testing peek() then pop() on full stack
+            if(stack.peek(data)){
+                std::cout << "peeking... id: " << data->id << " information: " << data->information << std::endl;
+            } 
+            else{
+                std::cout << "peek underflow error: stack is empty" << std::endl;
+            }
+
+            if (stack.pop(data)){
+                std::cout << "pop successful. popped... id: " << data->id << " information: " << data->information << std::endl;
+            }
+            else {
+                std::cout << "pop  underflow error... stack is empty" << std::endl;
+            }
+
+            std::cout << std::endl;
+            stack.dumpStack();
+            std::cout << std::endl;
+
+            /*******************************************
+             ******* EMPTYING AND EMPTY TESTS **********
+             ******************************************/
+
+            std::cout << "testing peek, pop and emptying the stack" << std::endl;
+            std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+
+            for (int i = 0; i < MULTIPLIER*size; i++){
+                if(stack.peek(data)){
+                    std::cout << "peeking... id: " << data->id << " information: " << data->information << std::endl;
+                } 
+                else{
+                    std::cout << "peek underflow error: stack is empty" << std::endl;
+                }
+
+                if (stack.pop(data)){
+                    std::cout << "pop successful. popped... id: " << data->id << " information: " << data->information << std::endl;
+                }
+                else {
+                    std::cout << "pop  underflow error... stack is empty" << std::endl;
+                }
+              std::cout << std::endl;  
+            }
+
+            //testing isEmpty on empty stack
+            if (stack.isEmpty()){
+                std::cout << "stack is empty" << std::endl;
             }
             else{
                 std::cout << "stack is NOT empty" << std::endl;
             }
 
             //testing peek and then pop on empty stack
-            if (stack.peek())
-  
+            if(stack.peek(data)){
+                std::cout << "peeking... id: " << data->id << " information: " << data->information << std::endl;
+            } 
+            else{
+                std::cout << "peek underflow error: stack is empty" << std::endl;
+            }
+
+            if (stack.pop(data)){
+                std::cout << "pop successful. popped... id: " << data->id << " information: " << data->information << std::endl;
+            }
+            else {
+                std::cout << "pop  underflow error... stack is empty" << std::endl;
+            }
+            std::cout << std::endl;
+
+
+           /*******************************************
+            ************ MID-STACK TESTS **************
+            *******************************************/
+            std::cout << "filling stack to halfway and testing in middle of stack.." << std::endl;
+            std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+
+            for (int i = 0; i < int(size/2); i++){
+                testValue = rand()%2 ? rand() % MAX_INT/2 + 1 : -(rand() % MAX_INT/2 + 1);
+                rand_string(&strtemp);
+
+                if(stack.push(testValue, &strtemp)){
+                    std::cout << "pushed.. id: " << testValue << " information: " << strtemp<< std::endl;
+                }
+                else if(testValue < 0 || strtemp.empty()){
+                    std::cout << "error. cannot push. push requires non-negative int and non empty string." << std::endl; 
+             }
+                else {
+                    std::cout << "overflow error.. could not push id: " << testValue << " information: " << strtemp << std::endl;
+                }
+                std::cout << std::endl;
+            }   
+
+            //testing middle in a narrow band
+            for (int i = 0; i < size*NARROW; i++){
+
+                //testing isEmpty on empty stack
+                if (stack.isEmpty()){
+                 std::cout << "stack is empty" << std::endl;
+                }
+                else{
+                    std::cout << "stack is NOT empty" << std::endl;
+                }
+                std::cout << std::endl;
+
+                //testing peek and then pop
+                if(stack.peek(data)){
+                    std::cout << "peeking... id: " << data->id << " information: " << data->information << std::endl;
+                } 
+                else{
+                    std::cout << "peek underflow error: stack is empty" << std::endl;
+                }
+
+                if (stack.pop(data)){
+                    std::cout << "pop successful. popped... id: " << data->id << " information: " << data->information << std::endl;
+                 }
+                else {
+                    std::cout << "pop  underflow error... stack is empty" << std::endl;
+                }
+
+                std::cout << std::endl;
+                testValue = rand()%2 ? rand() % MAX_INT/2 + 1 : -(rand() % MAX_INT/2 + 1);
+
+                if(stack.push(testValue, &strtemp)){
+                    std::cout << "pushed.. id: " << testValue << " information: " << strtemp<< std::endl;
+                }
+                else if(testValue < 0 || strtemp.empty()){
+                    std::cout << "error. cannot push. push requires non-negative int and non empty string." << std::endl; 
+                }
+                else {
+                    std::cout << "overflow error.. could not push id: " << testValue << " information: " << strtemp << std::endl;
+                }
+                std::cout << std::endl;
+            }
+
+            /*******************************************
+            ************ RANDOM TESTS ******************
+            ********************************************/
+
+            std::cout << "performing random testing" << std::endl;
+            std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+
+            //emptying the stack to begin random tests
+            while (!stack.isEmpty()){   
+                stack.pop(data);
+            }
+
+            //filling the stack half way with random numbers to begin random tests
+            for (int i = 0; i < int(size/2); i++){
+                testValue = rand() % MAX_INT + 1;
+                rand_string(&strtemp);
+
+                if(stack.push(testValue, &strtemp)){
+                    std::cout << "pushed.. id: " << testValue << " information: " << strtemp<< std::endl;
+                }
+                else if(testValue < 0 || strtemp.empty()){
+                    std::cout << "error. cannot push. push requires non-negative int and non empty string." << std::endl; 
+                }
+                else {
+                    std::cout << "overflow error.. could not push id: " << testValue << " information: " << strtemp << std::endl;
+                }
+                std::cout << std::endl;
+            }
+
+
+            std::cout << "Testing random operations..." << std::endl;
+            //this will test random operations. push and pop tested twice as often peek and isempty
+            int choice = rand() % CHOICES + 1;
+            for (int i = 0; i < size*RANDOM_MULTIPLIER; i++){
+
+                switch(choice){
+                    case 1:
+                    case 2:
+                        //pushing
+                        testValue = (rand() % MAX_INT) + 1;
+
+                        if(stack.push(testValue, &strtemp)){
+                            std::cout << "pushed.. id: " << testValue << " information: " << strtemp<< std::endl;
+                        }
+                        else if(testValue < 0 || strtemp.empty()){
+                            std::cout << "error. cannot push. push requires non-negative int and non empty string." << std::endl; 
+                        }
+                        else {
+                            std::cout << "overflow error.. could not push id: " << testValue << " information: " << strtemp << std::endl;
+                        }
+                        std::cout << std::endl;
+                        break;
+
+                    case 3:
+
+                    case 4:
+                        //popping
+                        if (stack.pop(data)){
+                            std::cout << "pop successful. popped... id: " << data->id << " information: " << data->information << std::endl;
+                        }
+                        else {
+                            std::cout << "pop  underflow error... stack is empty" << std::endl;
+                        }
+                        std::cout << std::endl;
+                        break;
+
+                    case 5: 
+                        //peek
+                        if(stack.peek(data)){
+                            std::cout << "peeking... id: " << data->id << " information: " << data->information << std::endl;
+                        } 
+                        else{
+                            std::cout << "peek underflow error: stack is empty" << std::endl;
+                        }
+                        std::cout << std::endl;
+                        break;
+
+                    case 6:
+                        //isEmpty testing
+                        if (stack.isEmpty()){
+                            std::cout << "stack is empty" << std::endl;
+                        }
+                        else{
+                        std::cout << "stack is NOT empty" << std::endl;
+                        }
+                        std::cout << std::endl;
+                        break;
+                }
+
+                choice = rand() % CHOICES + 1;
+                rand_string(&strtemp);   
+                stack.dumpStack();
+            std::cout << std::endl; 
+            }
+
+            std::cout << std::endl;
+            stack.dumpStack();
+            std::cout << std::endl;
 
 
 
-
-
-
-
+        delete data;
         }
         else {
-            std::cout << "Error "
+            std::cout << "Error.. can only accept an integer for stack size." << std::endl;
         }
 
     } else {
-        std::cout << "Error.... Program can only accept one argument as an int "
+        std::cout << "Error.... Invalid amount of arguments. " << std::endl;
     }
+
+
 
 
     return 0;
